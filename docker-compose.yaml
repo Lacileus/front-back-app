@@ -1,0 +1,24 @@
+services:
+  back:
+    image: back-image
+    container_name: back-container
+    env_file:
+      - .env
+    build: backend
+    ports:
+      - $BACK_PORT:$BACK_PORT
+  front:
+    image: front-image
+    container_name: front-container
+    env_file:
+      - .env
+    build: frontend/vue-app
+    ports:
+      - $FRONT_PORT:$FRONT_PORT
+    depends_on:
+      - back
+
+
+
+
+
